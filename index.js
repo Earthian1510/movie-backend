@@ -1,9 +1,17 @@
 const express = require('express')
+const cors = require('cors')
+
 const movieRoutes = require('./routes/movie.routes')
 const {initializeDatabase} = require("./db/db.connect")
-
 const app = express()
 app.use(express.json())
+const corsOptions = {
+    origin: "*",
+    credentials: true,
+    optionSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
 
 initializeDatabase()
 
